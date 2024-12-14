@@ -1,0 +1,63 @@
+
+<nav aria-label="breadcrumb" class="bg-light p-3 rounded">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="./statistiques.php"><i class="bi bi-house-door-fill"></i></a></li>
+            <li class="breadcrumb-item"><a href="./liste_admins.php">Admins</a></li>
+            <li class="breadcrumb-item">Modifier</li>
+        </ol>
+</nav>
+    <div class="d-flex justify-content-start align-items-center mb-4">
+        <h1><a href="./index.php" class="text-decoration-none"><i class="bi bi-arrow-left-circle"></i></a></h1>
+        <h1 class="mx-3">Modifier admin</h1>
+    </div>
+    
+    <div class="form-container">
+        <form method="post" action="./modifier_admin.php?id=<?= $donnees['id'] ?>">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input type="text" class="form-control" value="<?= $donnees['nom']?>" id="nom" name="nom" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="prenom" class="form-label">Prenom</label>
+                    <input type="text" class="form-control" value="<?= $donnees['prenom']?>" id="prenom" name="prenom" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="telephone" class="form-label">Telephone</label>
+                    <input type="tel" class="form-control" value="<?= $donnees['telephone']?>" id="telephone" name="telephone" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="dtn" class="form-label">Date de naissance</label>
+                    <input type="date" class="form-control" value="<?= $donnees['date_naissance']?>" id="dtn" name="date_naissance" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" value="<?= $donnees['email']?>" name="email" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" readonly  class="form-control"value="<?= $donnees['password']?>" id="password" name="password" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="role" class="form-label">Role</label>
+                    <select class="form-select" id="role" name="role" aria-label="Default select example">
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="cle" class="form-label">Cle</label>
+                    <input type="text" class="form-control" name="cle">
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" >Modifier</button>
+                <a href="./index.php" class="btn btn-secondary">Annuler</a>
+            </div>
+        </form>
+    </div>

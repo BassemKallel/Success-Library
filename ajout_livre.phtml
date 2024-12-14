@@ -1,0 +1,51 @@
+    <nav aria-label="breadcrumb" class="bg-light p-3 rounded">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="./statistiques.php"><i class="bi bi-house-door-fill"></i></a></li>
+            <li class="breadcrumb-item"><a href="./index.php">Utilisateurs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+        </ol>
+    </nav>
+    <div class="d-flex justify-content-start align-items-center mb-4">
+        <h1><a href="./index.php" class="text-decoration-none"><i class="bi bi-arrow-left-circle"></i></a></h1>
+        <h1 class="mx-3">Ajouter un adherents</h1>
+    </div>
+
+    <div class="form-container">
+        <form method="post" action="./ajout_livre.php">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="titre" class="form-label">Titre</label>
+                    <input type="text" class="form-control" id="titre" name="titre" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="auteur" class="form-label">Auteur</label>
+                    <input type="text" class="form-control" id="auteur" name="auteur" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="genre" class="form-label">Genre</label>
+                    <select class="form-select" name="genre" id="genre">
+                        <option value="Classique">Classique</option>
+                        <option value="Roman">Roman</option>
+                        <option value="Science-fiction">Science-fiction</option>
+                        <option value="Thriller/Policier">Thriller/Policier</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="dispo" class="form-label">Nombre Copies</label>
+                    <input type="number" min="0" class="form-control" id="dispo" name="dispo" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-12">
+                    <label for="resume" class="form-label">Resumé</label>
+                    <textarea class="form-control" name="resume" id="resume" cols="30" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Ajouter</button>
+                <a href="./liste_livres.php" class="btn btn-secondary">Annuler</a>
+            </div>
+        </form>
+    </div>

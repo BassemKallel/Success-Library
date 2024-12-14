@@ -1,0 +1,62 @@
+<nav aria-label="breadcrumb" class="bg-light p-3 rounded">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="./statistiques.php"><i class="bi bi-house-door-fill"></i></a></li>
+            <li class="breadcrumb-item"><a href="./index.php">Utilisateurs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+        </ol>
+</nav>
+    <div class="d-flex justify-content-start align-items-center mb-4">
+        <h1><a href="./index.php" class="text-decoration-none"><i class="bi bi-arrow-left-circle"></i></a></h1>
+        <h1 class="mx-3">Ajouter un adherents</h1>
+    </div>
+    
+    <div class="form-container">
+        <form method="post" action="./ajout_utilisateur.php">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input type="text" class="form-control"  id="nom" name="nom" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="prenom" class="form-label">Prenom</label>
+                    <input type="text" class="form-control"  id="prenom" name="prenom" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="adresse" class="form-label">Telephone</label>
+                    <input type="tel" class="form-control" id="tel" name="telephone" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="dtn" class="form-label">Date de naissance</label>
+                    <input type="date" class="form-control" id="dtn" name="dtn" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="role" class="form-label">Role</label>
+                    <select class="form-select" id="role" name="role" aria-label="Default select example">
+                        <option value="Utilisateur">Utilisateur</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="cle" class="form-label">Cle</label>
+                    <input type="text" class="form-control" name="cle">
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Ajouter</button>
+            </div>
+        </form>
+    </div>
+    

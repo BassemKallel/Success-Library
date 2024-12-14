@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-between align-items-center my-5">
+        <h1>Liste des Empruntes</h1>
+        <h1><a href="./ajout_emprunt.php"><i class="bi bi-plus"></i></a></h1>
+    </div>
+    <?php if (isset($_SESSION['add-success'])): ?>
+        <div id="message" class="alert alert-success" role="alert">
+            Borrow added successfully!
+        </div>
+        <?php unset($_SESSION['add-success']) ?>
+    <?php endif ?>
+
+    <?php if (isset($_SESSION['delete-success'])): ?>
+        <div id="message" class="alert alert-success" role="alert">
+            Borrow deleted successfully!
+        </div>
+        <?php unset($_SESSION['delete-success']) ?>
+    <?php endif ?>
+
+    <?php if (isset($_SESSION['return-success'])): ?>
+        <div id="message" class="alert alert-success" role="alert">
+            Loan marked as returned successfully!
+        </div>
+        <?php unset($_SESSION['return-success']) ?>
+    <?php endif ?>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+                    <th>ID</th>
+                    <th>Nom Membre </th>
+                    <th>Titre</th>
+                    <th>Date d'emprunt</th>
+                    <th>Date de retour</th>
+                    <th>Status</th>
+                    <th>Opertions</th>
+        </tr>
+    </thead>
+    <tbody>
+                <?php foreach ($loans as $loan): ?>
+                    <tr>
+                        <td><?= $loan['id'] ?></td>
+                        <td><?= $loan['member_name'] ?></td>
+                        <td><?= $loan['book_title'] ?></td>
+                        <td><?= $loan['date_emprunt'] ?></td>
+                        <td><?= $loan['date_retour'] ?></td>
+                        <td>
+                            <span class="badge <?= $loan['statut'] == 'En cours' ? 'bg-success' : ($loan['statut'] == 'Retard' ? 'bg-danger' : 'bg-secondary') ?>">
+                                <?= $loan['statut']?>
+                            </span>
+                        </td>
+                        <td>
+                        <?php if ($loan['statut'] == 'En cours' || $loan['statut'] == 'Retard'): ?>
+                          <a href="retourner_emprunt.php?id=<?= $loan['id'] ?>" class="btn btn-sm btn-warning"><i class="bi bi-caret-left"></i>Return</a>
+                        <?php else: ?>
+                          <a href="retourner_emprunt.php?id=<?= $loan['id'] ?>" class="btn btn-sm btn-warning disabled" aria-disabled="true"><i class="bi bi-caret-left"></i>Returned</a>
+                        <?php endif; ?>
+
+                            <a class="btn btn-danger" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?=$loan['id']?>"><i class="bi bi-trash"></i>Delete</a>
+                            <!-- Modal for each book -->
+                            <div class="modal fade" id="staticBackdrop<?=$loan['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<?=$loan['id']?>" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel<?=$loan['id']?>">Supprimer emprunt <?=$loan['member_name']?>'s Loan</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Êtes-vous sûr de vouloir supprimer cette Emprunt ?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</a>
+                                    
+                                      <a class="btn btn-danger" href="supprimer_emprunt.php? id=<?=$loan['id']?>">Supprimer</a>                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+
+    </table>
