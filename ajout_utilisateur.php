@@ -20,7 +20,7 @@
             header("Location: index.php");
         }
         else{
-            if($_POST["cle"]=="1234" && $role="Utilisateur"){
+            if($role="Utilisateur"){
             $req = $bdd->prepare('INSERT INTO adhérents (full_name,nom,prenom,email,password,Role,date_naissance,telephone) VALUES (?,?, ?, ?, ?, ?, ?, ?)');
             $req->execute([
             $full_name,
