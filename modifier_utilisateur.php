@@ -11,7 +11,6 @@
     if (!empty($_POST)) {
         extract($_POST);
         $full_name = $nom . ' ' . $prenom;
-        if ($_POST["cle"] == "1234") {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $req = $bdd->prepare('UPDATE adhérents SET full_name = ?, email = ?, password = ?, telephone = ?, Role = ?, date_naissance = ?, date_modification=? WHERE id = ?');
             $req->execute([
@@ -28,7 +27,6 @@
             header("Location: index.php");
             exit();
         }
-    }
     $template = "modifier_utilisateur";
     include "layout.phtml";
 ?>

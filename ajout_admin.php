@@ -22,7 +22,7 @@ if(!empty($_POST)){
         exit();
     }
     else{
-        if($_POST["cle"] == "1234" && $role == "Admin"){
+        if($role == "Admin"){
             $req = $bdd->prepare('INSERT INTO adhérents (full_name, nom, prenom, email, password, Role, date_naissance, telephone) VALUES (?, ?, ?,  ?, ?, ?, ?, ?)');
             $req->execute([
                 $full_name,
@@ -43,7 +43,6 @@ if(!empty($_POST)){
     }
     
 }
-
 $page_title = "Ajout Admin";
 $template = "ajout_admin";
 include "layout.phtml"; 
