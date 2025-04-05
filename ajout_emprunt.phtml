@@ -1,0 +1,46 @@
+<nav aria-label="breadcrumb" class="bg-light p-3 rounded">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="./index.php"><i class="bi bi-house-door-fill"></i></a></li>
+            <li class="breadcrumb-item"><a href="./index.php">Empruntes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
+        </ol>
+</nav>
+    <div class="d-flex justify-content-start align-items-center mb-4">
+        <h1><a href="./liste_emprunts.php" class="text-decoration-none"><i class="bi bi-arrow-left-circle"></i></a></h1>
+        <h1 class="mx-3">Ajouter une empruntes</h1>
+    </div>
+    
+    <div class="form-container">
+        <form method="post" action="./ajout_emprunt.php">
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Id membre</label>
+                    <input type="text" class="form-control"  id="id" name="id" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="bookSelect" class="form-label">Book</label>
+                    <select name="bookId" id="bookSelect" class="form-select" required>
+                        <option value="" disabled selected>Select a book</option>
+                            <?php foreach($books as $book): ?>
+                                <option value="<?= $book['id'] ?>"><?= $book['titre'] ?></option>
+                            <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label for="loanDate" class="form-label">Date d'emprunte</label>
+                    <input type="date" class="form-control" id="loanDate" name="loanDate" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="loanDate" class="form-label">Date de retour</label>
+                    <input type="date" class="form-control" id="returnDate" name="returnDate" required>
+                </div>
+            </div>
+        
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Ajouter</button>
+            </div>
+        </form>
+    </div>
+    

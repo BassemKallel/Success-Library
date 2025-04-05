@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-between align-items-center my-5">
+        <h1>Liste des livres</h1>
+        <h1><a href="./ajout_livre.php"><i class="bi bi-plus"></i></a></h1>
+    </div>
+    <?php if (isset($_SESSION['add-success'])): ?>
+        <div id="message" class="alert alert-success" role="alert">
+            Livre ajouté avec succées!
+        </div>
+        <?php unset($_SESSION['add-success']) ?>
+    <?php endif ?>
+    <?php if (isset($_SESSION['error'])): ?>
+        <div id="message" class="alert alert-danger" role="alert">
+            Livre existe deja !
+        </div>
+        <?php unset($_SESSION['error']) ?>
+    <?php endif ?>
+
+    <?php if (isset($_SESSION['delete-success'])): ?>
+        <div id="message" class="alert alert-danger" role="alert">
+            Livre supprimé avec succées!
+        </div>
+        <?php unset($_SESSION['delete-success']) ?>
+    <?php endif ?>
+    <?php if (isset($_SESSION['update-success'])): ?>
+        <div id="message" class="alert alert-success" role="alert">
+            Livre modifié avec succées!
+        </div>
+        <?php unset($_SESSION['update-success']) ?>
+    <?php endif ?>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Availability</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <?php foreach($lvrs as $lvr): ?>
+          <tr>
+                <th scope="row"><?=$lvr['id']?></th>
+                <td><?=$lvr['titre']?></td>
+                <td><?=$lvr['auteur']?></td>
+                <td><?=$lvr['genre']?></td>
+                <td><?=$lvr['disponibilite'].' copies'?></td>
+            <td>
+            <a class="btn btn-primary" href="./detail_livre.php?id=<?=$lvr['id']?>" role="button"><i class="bi bi-info-circle-fill"></i></a>
+            <a class="btn btn-success" href="./modifier_livre.php?id=<?=$lvr['id']?>" role="button"><i class="bi bi-pencil-square"></i></a>
+        
+                    <a class="btn btn-danger" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?=$lvr['id']?>"><i class="bi bi-trash"></i></a>
+              
+                    <!-- Modal for each book -->
+                    <div class="modal fade" id="staticBackdrop<?=$lvr['id']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<?=$lvr['id']?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel<?=$lvr['id']?>">Supprimer livre <?=$lvr['titre']?></h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Êtes-vous sûr de vouloir supprimer cette livre ?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuller</button>
+                    <a class="btn btn-danger" href="supprimer_livre.php? id=<?=$lvr['id']?>" role="button">Supprimer</a>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <?php endforeach ?>
+      </tbody>
+
+    </table>

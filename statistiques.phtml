@@ -1,0 +1,26 @@
+<h1>Dashboard</h1>
+    <div class="stats-container">
+        <div class="stat">
+            <a href="./index.php">
+                <i class="fas fa-users"></i>
+                <h2>Total d'adhérents</h2>
+                <p><?= $stats['total_adhérents'] ?></p>
+            </a>
+            
+        </div>
+        <div class="stat">
+            <a href="./liste_livres.php">
+                <i class="fas fa-book"></i>
+                <h2>Total de livres</h2>
+                <p><?= $stats['total_livres'] ?></p>
+            </a>
+            
+        </div>
+        <div class="stat">
+            <a href="./liste_emprunts.php">
+                <i class="fas fa-book-reader"></i>
+                <h2>Livres empruntés</h2>
+                <p><?= $stats['livres_empruntés'] ?></p>
+            </a>
+        </div>
+    </div>
