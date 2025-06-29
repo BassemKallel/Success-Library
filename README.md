@@ -15,7 +15,7 @@ Success Library est une application de gestion de bibliothèque développée en 
 - PHP
 - MySQL
 - HTML5 / CSS3 / JavaScript
-- Bootstrap (optionnel)
+- Bootstrap
 
 ## 📦 Installation
 
